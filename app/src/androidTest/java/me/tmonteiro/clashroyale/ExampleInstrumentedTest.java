@@ -1,4 +1,4 @@
-package me.tmonteiro.clashroyal;
+package me.tmonteiro.clashroyale;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

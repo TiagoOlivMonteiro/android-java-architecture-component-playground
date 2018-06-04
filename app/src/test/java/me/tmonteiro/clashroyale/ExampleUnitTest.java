@@ -1,4 +1,4 @@
-package me.tmonteiro.clashroyal;
+package me.tmonteiro.clashroyale;
 
 import org.junit.Test;
 
