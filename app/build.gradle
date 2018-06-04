@@ -1,15 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+
+    compileSdkVersion versions.compileSdkVersion
+
     defaultConfig {
         applicationId "me.tmonteiro.clashroyal"
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode versions.versionCode
+        versionName versions.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -19,16 +22,30 @@ android {
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // App Support
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation libraries.supportAppCompat
+    implementation libraries.supportRecyclerView
+
+    // ViewModel and LiveData
+    implementation libraries.lifeCycleExtestion
+
+    // Dagger
+    implementation libraries.dagger
+    implementation libraries.daggerAndroid
+    annotationProcessor libraries.daggerCompiler
+    annotationProcessor libraries.daggerAndroidProcessor
+
+    // Retrofit
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverterGson
 
     // Unit Test
-    testImplementation 'junit:junit:4.12'
+    testImplementation libraries.junit
 
-
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // Instrumental Test
+    androidTestImplementation libraries.testRunner
+    androidTestImplementation libraries.espressoCore
 }
