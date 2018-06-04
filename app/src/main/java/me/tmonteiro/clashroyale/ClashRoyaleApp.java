@@ -10,7 +10,7 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import me.tmonteiro.clashroyale.di.AppInjector;
 
-public class ClashRoyalApp extends Application implements HasActivityInjector {
+public class ClashRoyaleApp extends Application implements HasActivityInjector {
 
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
