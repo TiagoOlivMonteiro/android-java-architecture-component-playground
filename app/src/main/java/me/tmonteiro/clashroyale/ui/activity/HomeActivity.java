@@ -1,4 +1,4 @@
-package me.tmonteiro.clashroyal.ui.activity;
+package me.tmonteiro.clashroyale.ui.activity;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
@@ -13,12 +13,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import me.tmonteiro.clashroyal.R;
-import me.tmonteiro.clashroyal.vo.card.CardInfo;
-import me.tmonteiro.clashroyal.vo.card.CardComposition;
-import me.tmonteiro.clashroyal.vo.card.CardStatus;
-import me.tmonteiro.clashroyal.ui.adapter.CardAdapter;
-import me.tmonteiro.clashroyal.viewmodel.card.CardViewModel;
+import me.tmonteiro.clashroyale.R;
+import me.tmonteiro.clashroyale.vo.card.CardInfo;
+import me.tmonteiro.clashroyale.vo.card.CardComposition;
+import me.tmonteiro.clashroyale.vo.card.CardStatus;
+import me.tmonteiro.clashroyale.ui.adapter.CardAdapter;
+import me.tmonteiro.clashroyale.viewmodel.card.CardViewModel;
 
 public class HomeActivity extends AppCompatActivity {
 
