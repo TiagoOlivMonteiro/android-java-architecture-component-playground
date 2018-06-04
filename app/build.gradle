@@ -42,6 +42,10 @@ dependencies {
     implementation libraries.retrofit
     implementation libraries.retrofitConverterGson
 
+    // OkHttp
+    implementation libraries.okHttp
+    implementation libraries.okHttpInterceptor
+
     // Unit Test
     testImplementation libraries.junit
 
