@@ -7,7 +7,7 @@ import me.tmonteiro.clashroyale.ClashRoyaleApp;
 
 
 // TODO Add AppModule.class
-@Component(modules = {AndroidInjectionModule.class, ActivityModule.class})
+@Component(modules = {AndroidInjectionModule.class, ActivityModule.class, RestApiModule.class})
 public interface AppComponent extends AndroidInjector<ClashRoyaleApp> {
 }
 
