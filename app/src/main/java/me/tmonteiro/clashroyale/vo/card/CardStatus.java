@@ -1,4 +1,4 @@
-package me.tmonteiro.clashroyal.vo.card;
+package me.tmonteiro.clashroyale.vo.card;
 
 public enum CardStatus {
     LOADING,
