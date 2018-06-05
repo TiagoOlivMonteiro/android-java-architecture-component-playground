@@ -18,7 +18,9 @@ public class AppInjector {
         application.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-                AndroidInjection.inject(activity);
+                if (activity instanceof Injectable) {
+                    AndroidInjection.inject(activity);
+                }
             }
 
             @Override
