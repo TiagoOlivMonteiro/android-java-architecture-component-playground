@@ -1,6 +1,6 @@
 package me.tmonteiro.clashroyale.vo;
 
-public class BaseVO<T1, T2> {
+public class BaseVO<T1 extends Enum, T2> {
 
     private T1 status;
     private T2 result;
