@@ -14,13 +14,15 @@ import java.util.List;
 import javax.inject.Inject;
 
 import me.tmonteiro.clashroyale.R;
-import me.tmonteiro.clashroyale.vo.card.CardInfo;
-import me.tmonteiro.clashroyale.vo.card.CardComposition;
-import me.tmonteiro.clashroyale.vo.card.CardStatus;
+import me.tmonteiro.clashroyale.api.CardAPI;
+import me.tmonteiro.clashroyale.di.Injectable;
 import me.tmonteiro.clashroyale.ui.adapter.CardAdapter;
 import me.tmonteiro.clashroyale.viewmodel.card.CardViewModel;
+import me.tmonteiro.clashroyale.vo.card.CardComposition;
+import me.tmonteiro.clashroyale.vo.card.CardInfo;
+import me.tmonteiro.clashroyale.vo.card.CardStatus;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements Injectable {
 
 
     @Inject
@@ -43,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_card);
     }
 
-    private void setupViewModel(){
+    private void setupViewModel() {
         this.cardViewModel = ViewModelProviders.of(this, factory)
                 .get(CardViewModel.class);
     }
@@ -53,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         this.cardViewModel.getCardList().observe(this, new Observer<CardComposition>() {
             @Override
             public void onChanged(@Nullable CardComposition cardComposition) {
-                if(cardComposition.getStatus() == CardStatus.SUCCESS){
+                if (cardComposition.getStatus() == CardStatus.SUCCESS) {
                     fetchRecycleViewer(cardComposition.getResult());
                 }
             }
