@@ -6,16 +6,28 @@ import android.arch.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.tmonteiro.clashroyale.vo.card.CardInfo;
+import javax.inject.Inject;
+
+import me.tmonteiro.clashroyale.api.CardAPI;
+import me.tmonteiro.clashroyale.model.card.Card;
 import me.tmonteiro.clashroyale.vo.card.CardComposition;
+import me.tmonteiro.clashroyale.vo.card.CardInfo;
 import me.tmonteiro.clashroyale.vo.card.CardStatus;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CardRepository {
 
-    //TODO: Inject API + RxJava to combine streams
+//    @Inject
+    CardAPI cardAPI;
 
     private MutableLiveData<CardComposition> listCard;
 
+    @Inject
+    public CardRepository(CardAPI cardAPI){
+        this.cardAPI = cardAPI;
+    }
 
     public LiveData<CardComposition> getCardList() {
 
@@ -24,28 +36,43 @@ public class CardRepository {
         }
 
         return listCard;
-
     }
 
     private void loadCardList() {
 
         listCard = new MutableLiveData<>();
+        final CardComposition cardHolder = new CardComposition();
+        cardHolder.setStatus(CardStatus.LOADING);
 
-        CardComposition cardHolder = new CardComposition();
-        CardInfo cardInfo = new CardInfo();
-        List<CardInfo> cardInfoList = new ArrayList<>();
+        Call<List<Card>> cards = cardAPI.getCards();
+        cards.enqueue(new Callback<List<Card>>() {
+            @Override
+            public void onResponse(Call<List<Card>> call, Response<List<Card>> response) {
+                cardHolder.setStatus(CardStatus.SUCCESS);
+                cardHolder.setResult(convertCardListToCardInfoList(response.body()));
+            }
 
-        cardInfo.setName("ABC");
-        cardInfoList.add(cardInfo);
+            @Override
+            public void onFailure(Call<List<Card>> call, Throwable t) {
+                cardHolder.setStatus(CardStatus.ERROR);
+            }
+        });
 
-        cardInfo = new CardInfo();
-        cardInfo.setName("XYZ");
-        cardInfoList.add(cardInfo);
-
-        cardHolder.setStatus(CardStatus.SUCCESS);
-        cardHolder.setResult(cardInfoList);
         listCard.postValue(cardHolder);
     }
 
+    private static List<CardInfo> convertCardListToCardInfoList(List<Card> list) {
+        List<CardInfo> ret = new ArrayList<>();
+        CardInfo cardInfo;
+
+        for (Card card : list) {
+            cardInfo = new CardInfo();
+            cardInfo.setName(card.getName());
+            cardInfo.setIconUrl(card.getImageUrl());
+            ret.add(cardInfo);
+        }
+
+        return ret;
+    }
 
 }
