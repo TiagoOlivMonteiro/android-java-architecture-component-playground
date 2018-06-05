@@ -46,6 +46,9 @@ dependencies {
     implementation libraries.okHttp
     implementation libraries.okHttpInterceptor
 
+    // Picasso
+    implementation libraries.picasso
+
     // Unit Test
     testImplementation libraries.junit
 

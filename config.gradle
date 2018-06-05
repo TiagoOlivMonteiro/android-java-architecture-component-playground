@@ -22,6 +22,9 @@ ext.versions = [
         // Lifecycle
         lifecycleVersion  : '1.1.1',
 
+        // Picasso
+        picassoVersion    : '2.71828',
+
         // Testing
         junitVersion      : '4.12',
         testRunnerVersion : '1.0.2',
@@ -41,6 +44,7 @@ ext.libraries = [
         retrofitConverterGson : "com.squareup.retrofit2:converter-gson:$versions.retrofitVersion",
         okHttp : "com.squareup.okhttp3:okhttp:$versions.okHttpVersion",
         okHttpInterceptor : "com.squareup.okhttp3:logging-interceptor:$versions.okHttpVersion",
+        picasso :"com.squareup.picasso:picasso:$versions.picassoVersion",
         junit : "junit:junit:$versions.junitVersion",
         testRunner : "com.android.support.test:runner:$versions.testRunnerVersion",
         espressoCore :  "com.android.support.test.espresso:espresso-core:$versions.espressoVersion"
