@@ -1,13 +1,15 @@
 package me.tmonteiro.clashroyale.di;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 import me.tmonteiro.clashroyale.ClashRoyaleApp;
 
-
-// TODO Add AppModule.class
+@Singleton
 @Component(modules = {AndroidInjectionModule.class, ActivityModule.class, RestApiModule.class})
 public interface AppComponent extends AndroidInjector<ClashRoyaleApp> {
 }
+
 

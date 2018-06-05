@@ -4,21 +4,20 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import me.tmonteiro.clashroyale.api.CardAPI;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.net.sip.SipErrorCode.TIME_OUT;
-
 @Module
 public class RestApiModule {
+
+    public final static String API_URL = "http://www.clashapi.xyz/";
 
     @Provides
     @Singleton
@@ -27,8 +26,9 @@ public class RestApiModule {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addInterceptor(loggingInterceptor);
-        builder.connectTimeout(TIME_OUT, TimeUnit.SECONDS);
-        builder.readTimeout(TIME_OUT, TimeUnit.SECONDS);
+        //TODO: Review
+//        builder.connectTimeout(TIME_OUT, TimeUnit.SECONDS);
+//        builder.readTimeout(TIME_OUT, TimeUnit.SECONDS);
         return builder.build();
     }
 
@@ -45,9 +45,15 @@ public class RestApiModule {
     Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl("http://www.clashapi.xyz/")
+                .baseUrl(API_URL)
                 .client(okHttpClient)
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    CardAPI providesCardApi(Retrofit retrofit) {
+        return retrofit.create(CardAPI.class);
     }
 
 }

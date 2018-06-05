@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProvider;
 
 import dagger.Module;
 import dagger.Provides;
+import me.tmonteiro.clashroyale.api.CardAPI;
 import me.tmonteiro.clashroyale.repository.card.CardRepository;
 import me.tmonteiro.clashroyale.ui.activity.HomeActivity;
 import me.tmonteiro.clashroyale.viewmodel.card.CardViewModel;
@@ -12,8 +13,8 @@ import me.tmonteiro.clashroyale.viewmodel.card.CardViewModel;
 public class HomeModule {
 
     @Provides
-    CardRepository providesCardRepository() {
-        return new CardRepository();
+    CardRepository providesCardRepository(CardAPI cardAPI) {
+        return new CardRepository(cardAPI);
     }
 
     @Provides
