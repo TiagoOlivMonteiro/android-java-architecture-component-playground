@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import me.tmonteiro.clashroyale.R;
@@ -37,6 +39,7 @@ public class CardAdapter extends RecyclerView.Adapter  {
         CardViewHolder holder = (CardViewHolder) viewHolder;
         CardInfo cardInfo = cardInfoList.get(position);
         holder.getName().setText(cardInfo.getName());
+        Picasso.get().load(cardInfo.getIconUrl()).into(holder.getIcon());
     }
 
     @Override
