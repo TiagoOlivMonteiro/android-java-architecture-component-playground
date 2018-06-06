@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import me.tmonteiro.clashroyale.api.CardAPI;
+import me.tmonteiro.clashroyale.api.CardDetailAPI;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -54,6 +55,12 @@ public class RestApiModule {
     @Singleton
     CardAPI providesCardApi(Retrofit retrofit) {
         return retrofit.create(CardAPI.class);
+    }
+
+    @Provides
+    @Singleton
+    CardDetailAPI providesDetailCardApi(Retrofit retrofit) {
+        return retrofit.create(CardDetailAPI.class);
     }
 
 }
