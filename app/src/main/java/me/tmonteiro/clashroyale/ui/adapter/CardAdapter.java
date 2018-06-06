@@ -40,7 +40,7 @@ public class CardAdapter extends RecyclerView.Adapter {
                 final int itemPosition = holder.getAdapterPosition();
                 final CardInfo cardInfo = cardInfoList.get(itemPosition);
                 if(cardInfo != null){
-                    cardAdapterItemSelected.itemSelected(cardInfo.getName());
+                    cardAdapterItemSelected.itemSelected(cardInfo.getIdName());
                 }
 
             }
