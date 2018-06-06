@@ -18,10 +18,9 @@ import retrofit2.Response;
 
 public class CardRepository {
 
-//    @Inject
     CardAPI cardAPI;
 
-    private MutableLiveData<CardComposition> listCard;
+    private MutableLiveData<CardComposition> listCardLiveData;
 
     @Inject
     public CardRepository(CardAPI cardAPI){
@@ -30,16 +29,16 @@ public class CardRepository {
 
     public LiveData<CardComposition> getCardList() {
 
-        if (listCard == null) {
+        if (listCardLiveData == null) {
             loadCardList();
         }
 
-        return listCard;
+        return listCardLiveData;
     }
 
     private void loadCardList() {
 
-        listCard = new MutableLiveData<>();
+        listCardLiveData = new MutableLiveData<>();
         final CardComposition cardHolder = new CardComposition();
         cardHolder.setStatus(CardStatus.LOADING);
 
@@ -49,19 +48,21 @@ public class CardRepository {
             public void onResponse(Call<List<Card>> call, Response<List<Card>> response) {
                 cardHolder.setStatus(CardStatus.SUCCESS);
                 cardHolder.setResult(CardToCardInfo.convertCardListToCardInfoList(response.body()));
-                listCard.setValue(cardHolder);
+                listCardLiveData.setValue(cardHolder);
             }
 
             @Override
             public void onFailure(Call<List<Card>> call, Throwable t) {
                 cardHolder.setStatus(CardStatus.ERROR);
-                listCard.setValue(null);
+                cardHolder.setResult(null);
+                listCardLiveData.setValue(cardHolder);
             }
         });
 
-        listCard.postValue(cardHolder);
+        listCardLiveData.postValue(cardHolder);
     }
 
 
 
 }
+
