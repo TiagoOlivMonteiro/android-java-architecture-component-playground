@@ -6,24 +6,26 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Adapter;
+import android.widget.Toast;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import me.tmonteiro.clashroyale.R;
-import me.tmonteiro.clashroyale.api.CardAPI;
 import me.tmonteiro.clashroyale.di.Injectable;
 import me.tmonteiro.clashroyale.ui.adapter.CardAdapter;
+import me.tmonteiro.clashroyale.ui.adapter.CardAdapterItemSelected;
 import me.tmonteiro.clashroyale.viewmodel.card.CardViewModel;
 import me.tmonteiro.clashroyale.vo.card.CardComposition;
 import me.tmonteiro.clashroyale.vo.card.CardInfo;
 import me.tmonteiro.clashroyale.vo.card.CardStatus;
 
-public class HomeActivity extends AppCompatActivity implements Injectable {
-
+public class HomeActivity extends AppCompatActivity implements Injectable, CardAdapterItemSelected {
 
     @Inject
     ViewModelProvider.Factory factory;
@@ -42,7 +44,8 @@ public class HomeActivity extends AppCompatActivity implements Injectable {
     }
 
     private void setupView() {
-        recyclerView = findViewById(R.id.rv_card);
+        this.recyclerView = findViewById(R.id.rv_card);
+        this.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }
 
     private void setupViewModel() {
@@ -56,15 +59,19 @@ public class HomeActivity extends AppCompatActivity implements Injectable {
             @Override
             public void onChanged(@Nullable CardComposition cardComposition) {
                 if (cardComposition.getStatus() == CardStatus.SUCCESS) {
-                    fetchRecycleViewer(cardComposition.getResult());
+                    fetchRecyclerViewer(cardComposition.getResult());
                 }
             }
         });
     }
 
-    private void fetchRecycleViewer(List<CardInfo> cardInfoList) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new CardAdapter(getApplicationContext(), cardInfoList));
+    private void fetchRecyclerViewer(List<CardInfo> cardInfoList) {
+        CardAdapter cardAdapter = new CardAdapter(getApplicationContext(), this, cardInfoList);
+        recyclerView.setAdapter(cardAdapter);
     }
 
+    @Override
+    public void itemSelected(String idName) {
+        Toast.makeText(this, "Selected: " + idName, Toast.LENGTH_SHORT).show();
+    }
 }
