@@ -18,7 +18,7 @@ public class HomeModule {
     }
 
     @Provides
-    ViewModelProvider.Factory providesViewModelFactory(HomeActivity activity, CardRepository repository) {
+    ViewModelProvider.Factory providesCardViewModelFactory(CardRepository repository) {
         return new CardViewModel.Factory(repository);
     }
 
