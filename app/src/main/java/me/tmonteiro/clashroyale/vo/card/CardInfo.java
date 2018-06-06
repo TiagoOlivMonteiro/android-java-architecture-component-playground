@@ -6,7 +6,6 @@ public class CardInfo {
     private String name;
     private String iconUrl;
 
-
     public String getIdName() {
         return idName;
     }
