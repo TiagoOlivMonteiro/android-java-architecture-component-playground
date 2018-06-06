@@ -3,13 +3,12 @@ package me.tmonteiro.clashroyale.ui.activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Adapter;
 import android.widget.Toast;
 
 import java.util.List;
@@ -70,8 +69,17 @@ public class HomeActivity extends AppCompatActivity implements Injectable, CardA
         recyclerView.setAdapter(cardAdapter);
     }
 
+    private void navigateToDetail(String idName) {
+        final Bundle bundle = new Bundle();
+        bundle.putString(DetailActivity.EXTRA_ID_NAME, idName);
+        final Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
     @Override
     public void itemSelected(String idName) {
-        Toast.makeText(this, "Selected: " + idName, Toast.LENGTH_SHORT).show();
+        navigateToDetail(idName);
     }
+
 }
