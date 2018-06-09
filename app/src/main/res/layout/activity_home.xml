@@ -6,7 +6,7 @@
     tools:context=".ui.activity.HomeActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/card_detail_gradient"
         tools:listitem="@layout/item_home"
         android:id="@+id/rv_card"
         android:layout_width="match_parent"
