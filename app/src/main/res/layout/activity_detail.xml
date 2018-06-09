@@ -1,15 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/card_detail_gradient">
 
-
-    <TextView
-        android:id="@+id/tv_description"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        tools:text="Description" />
+        android:layout_height="@dimen/card_detail_cardview_height"
+        android:layout_margin="@dimen/card_detail_cardview_margin"
+        card_view:cardBackgroundColor="@color/card_detatil_cardview"
+        card_view:cardCornerRadius="@dimen/card_detail_cardview_corner"
+        card_view:cardElevation="@dimen/card_detail_cardview_elevation">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="@dimen/card_detail_icon"
+                android:layout_height="@dimen/card_detail_icon"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/tv_name"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/card_detail_icon_margin" />
+
+            <LinearLayout
+                android:id="@+id/ll_info_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/iv_icon"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/card_detail_card_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/card_detatil_title"
+                    android:layout_margin="@dimen/card_detail_info_margin"
+                    tools:text="Card Title" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/card_detail_description_text"
+                    android:textColor="@color/card_detatil_description"
+                    android:layout_margin="@dimen/card_detail_info_margin"
+                    tools:text="Description" />
+
+            </LinearLayout>
 
 
-</RelativeLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>
