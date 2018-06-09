@@ -29,6 +29,9 @@
 
     <dimen name="card_detail_info_margin">5dp</dimen>
 
+    <dimen name="try_again_info">20sp</dimen>
+    <dimen name="try_again_action">20sp</dimen>
+
 
 
 </resources>

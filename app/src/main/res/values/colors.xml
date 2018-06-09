@@ -22,5 +22,6 @@
     <color name="card_detatil_title">#332E55</color>
     <color name="card_detatil_description">#282158</color>
 
+    <color name="try_again">#FFFF88</color>
 
 </resources>

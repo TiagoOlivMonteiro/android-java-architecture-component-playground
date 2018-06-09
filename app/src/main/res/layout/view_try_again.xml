@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/card_detail_gradient"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/try_again_info"
+        android:textColor="@color/try_again"
+        android:textSize="@dimen/try_again_info"
+        tools:text="Please try again..." />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_try_again"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="@string/try_again_action"
+        android:textAllCaps="true"
+        android:textColor="@color/try_again"
+        android:textSize="@dimen/try_again_action"
+        android:textStyle="bold"
+        tools:text="click here" />
+
+</LinearLayout>

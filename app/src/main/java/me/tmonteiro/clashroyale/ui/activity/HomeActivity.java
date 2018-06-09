@@ -9,7 +9,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -22,9 +24,9 @@ import me.tmonteiro.clashroyale.ui.adapter.CardAdapterItemSelected;
 import me.tmonteiro.clashroyale.viewmodel.card.CardViewModel;
 import me.tmonteiro.clashroyale.vo.card.CardComposition;
 import me.tmonteiro.clashroyale.vo.card.CardInfo;
-import me.tmonteiro.clashroyale.vo.card.CardStatus;
 
-public class HomeActivity extends AppCompatActivity implements Injectable, CardAdapterItemSelected {
+public class HomeActivity extends AppCompatActivity implements Injectable, CardAdapterItemSelected, View.OnClickListener
+{
 
     @Inject
     ViewModelProvider.Factory factory;
@@ -32,6 +34,9 @@ public class HomeActivity extends AppCompatActivity implements Injectable, CardA
     CardViewModel cardViewModel;
 
     RecyclerView recyclerView;
+    View tryAgainView;
+    TextView tvTryAgain;
+    ProgressBar pbLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +49,11 @@ public class HomeActivity extends AppCompatActivity implements Injectable, CardA
 
     private void setupView() {
         this.recyclerView = findViewById(R.id.rv_card);
+        this.tvTryAgain = findViewById(R.id.tv_try_again);
+        this.tryAgainView = findViewById(R.id.try_again_container);
+        this.pbLoading = findViewById(R.id.pb_loading);
         this.recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        this.tvTryAgain.setOnClickListener(this);
     }
 
     private void setupViewModel() {
@@ -52,17 +61,46 @@ public class HomeActivity extends AppCompatActivity implements Injectable, CardA
                 .get(CardViewModel.class);
     }
 
-
     private void loadCards() {
+        this.handleProgressVisibility(true);
         this.cardViewModel.getCardList().observe(this, new Observer<CardComposition>() {
             @Override
             public void onChanged(@Nullable CardComposition cardComposition) {
-                if (cardComposition.getStatus() == CardStatus.SUCCESS) {
-                    fetchRecyclerViewer(cardComposition.getResult());
+
+                if(cardComposition == null || cardComposition.getStatus() == null){
+                    handleError();
+                }
+
+                switch (cardComposition.getStatus()) {
+                    case SUCCESS:
+                        handleSuccess(cardComposition.getResult());
+                        break;
+                    case ERROR:
+                        handleError();
+                        break;
+                    case LOADING:
+                        handleProgress();
+                        break;
                 }
             }
         });
     }
+
+    private void handleProgress(){
+        handleProgressVisibility(true);
+    }
+
+    private void handleSuccess(List<CardInfo> cardInfoList){
+        handleProgressVisibility(false);
+        handleTryAgainVisibility(false);
+        fetchRecyclerViewer(cardInfoList);
+    }
+
+    private void handleError(){
+        handleProgressVisibility(false);
+        handleTryAgainVisibility(true);
+    }
+
 
     private void fetchRecyclerViewer(List<CardInfo> cardInfoList) {
         CardAdapter cardAdapter = new CardAdapter(getApplicationContext(), this, cardInfoList);
@@ -77,9 +115,32 @@ public class HomeActivity extends AppCompatActivity implements Injectable, CardA
         startActivity(intent);
     }
 
+    private void handleTryAgainVisibility(boolean visible){
+        if(visible){
+            tryAgainView.setVisibility(View.VISIBLE);
+        } else {
+            tryAgainView.setVisibility(View.GONE);
+        }
+    }
+
+    private void handleProgressVisibility(boolean visible) {
+        if(visible){
+            pbLoading.setVisibility(View.VISIBLE);
+        } else {
+            pbLoading.setVisibility(View.GONE);
+        }
+
+    }
+
     @Override
     public void itemSelected(String idName) {
         navigateToDetail(idName);
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.tv_try_again){
+            loadCards();
+        }
+    }
 }

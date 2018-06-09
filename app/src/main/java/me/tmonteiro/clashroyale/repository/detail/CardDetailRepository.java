@@ -27,9 +27,7 @@ public class CardDetailRepository {
 
     public LiveData<CardDetailComposition> getCard(String card) {
 
-        if (this.cardDetailLiveData == null) {
-            loadCardDetail(card);
-        }
+        loadCardDetail(card);
 
         return cardDetailLiveData;
     }

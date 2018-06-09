@@ -2,4 +2,6 @@
     <string name="app_name">Clash Royale Cards</string>
     <string name="card_elixir_cost">%d</string>
     <string name="card_arena">Arena %d</string>
+    <string name="try_again_info">Please try again...</string>
+    <string name="try_again_action">click here </string>
 </resources>

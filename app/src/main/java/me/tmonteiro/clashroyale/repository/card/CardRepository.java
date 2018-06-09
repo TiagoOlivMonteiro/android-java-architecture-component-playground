@@ -29,9 +29,7 @@ public class CardRepository {
 
     public LiveData<CardComposition> getCardList() {
 
-        if (listCardLiveData == null) {
-            loadCardList();
-        }
+        loadCardList();
 
         return listCardLiveData;
     }

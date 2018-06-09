@@ -10,10 +10,11 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import me.tmonteiro.clashroyale.di.AppInjector;
 
-// TODO: Design
-// TODO: API: Loading, Error
+// TODO: Design Detail
+// TODO: API: Loading
+// TODO> API: Error (Card e Detail)
 // TODO: Testing: Instrumented teste and unit test
-// TODO: CI
+// TODO: CI CircleCI
 public class ClashRoyaleApp extends Application implements HasActivityInjector {
 
     @Inject
