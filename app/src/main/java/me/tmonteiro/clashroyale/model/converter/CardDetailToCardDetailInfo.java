@@ -8,6 +8,8 @@ public class CardDetailToCardDetailInfo {
     public static CardDetailInfo convertCardDetatilToCardDetailInfo(CardDetail cardDetail) {
         CardDetailInfo cardDetailInfo = new CardDetailInfo();
         cardDetailInfo.setDescription(cardDetail.getDescription());
+        cardDetailInfo.setTitle(cardDetail.getName());
+        cardDetailInfo.setIconUrl(cardDetail.getImageUrl());
         return cardDetailInfo;
     }
 }
