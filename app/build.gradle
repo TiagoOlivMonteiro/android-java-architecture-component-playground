@@ -29,6 +29,9 @@ dependencies {
     implementation libraries.supportAppCompat
     implementation libraries.supportRecyclerView
 
+    // CardView
+    implementation libraries.cardView
+
     // ViewModel and LiveData
     implementation libraries.lifeCycleExtestion
 
