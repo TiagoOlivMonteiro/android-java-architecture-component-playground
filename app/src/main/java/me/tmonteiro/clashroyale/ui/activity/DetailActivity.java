@@ -6,7 +6,10 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -25,7 +28,9 @@ public class DetailActivity extends AppCompatActivity implements Injectable {
 
     private String idName;
     private CardDetailViewModel cardDetailViewModel;
+    private TextView tvTitle;
     private TextView tvDescription;
+    private ImageView ivIcon;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +43,8 @@ public class DetailActivity extends AppCompatActivity implements Injectable {
     }
 
     private void setupView() {
+        this.ivIcon = findViewById(R.id.iv_icon);
+        this.tvTitle = findViewById(R.id.tv_title);
         this.tvDescription = findViewById(R.id.tv_description);
     }
 
@@ -66,6 +73,8 @@ public class DetailActivity extends AppCompatActivity implements Injectable {
 
     private void setCardInfo(CardDetailInfo cardDetailInfo) {
         this.tvDescription.setText(cardDetailInfo.getDescription());
+        this.tvTitle.setText(cardDetailInfo.getTitle());
+        Picasso.get().load(cardDetailInfo.getIconUrl()).into(ivIcon);
     }
 
 
