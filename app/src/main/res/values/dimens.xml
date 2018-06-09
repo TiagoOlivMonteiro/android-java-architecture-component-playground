@@ -16,4 +16,19 @@
     <dimen name="card_arena_magin">5dp</dimen>
     <dimen name="card_arena_text">12sp</dimen>
 
+    <dimen name="card_detail_cardview_height">150dp</dimen>
+    <dimen name="card_detail_cardview_margin">10dp</dimen>
+    <dimen name="card_detail_cardview_corner">3dp</dimen>
+    <dimen name="card_detail_cardview_elevation">10dp</dimen>
+
+    <dimen name="card_detail_icon">80dp</dimen>
+    <dimen name="card_detail_icon_margin">10dp</dimen>
+
+    <dimen name="card_detail_card_text">20sp</dimen>
+    <dimen name="card_detail_description_text">16sp</dimen>
+
+    <dimen name="card_detail_info_margin">5dp</dimen>
+
+
+
 </resources>
