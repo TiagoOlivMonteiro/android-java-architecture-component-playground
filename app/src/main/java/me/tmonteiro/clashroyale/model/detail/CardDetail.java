@@ -3,7 +3,11 @@ package me.tmonteiro.clashroyale.model.detail;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import static me.tmonteiro.clashroyale.di.RestApiModule.API_URL;
+
 public class CardDetail {
+
+    private static final String IMG_URL_PATTERN = "%simages/cards/%s.png";
 
     @SerializedName("_id")
     @Expose
@@ -93,5 +97,9 @@ public class CardDetail {
 
     public void setArena(Integer arena) {
         this.arena = arena;
+    }
+
+    public String getImageUrl() {
+        return String.format(IMG_URL_PATTERN, API_URL, getIdName());
     }
 }
