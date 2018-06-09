@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:id="@+id/iv_icon"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true" />
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="140dp"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/card_title"
+        android:textSize="@dimen/card_title_text"
+        android:textStyle="bold"
+        tools:text="CARD" />
+
+    <View
+        android:id="@+id/view_rarity"
+        android:layout_width="@dimen/card_view_rarity_width"
+        android:layout_height="@dimen/card_view_rarity_height"
+        android:layout_below="@id/tv_name"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/card_view_rarity_margin"
+        android:background="@drawable/card_legendary" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/card_icon"
+        android:layout_height="@dimen/card_icon"
+        android:layout_below="@id/tv_name"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/card_icon_margin" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_elixir_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/iv_icon"
-        android:layout_centerVertical="true"
-        android:textColor="@color/colorAccent"
-        tools:text="Description" />
+        android:layout_below="@id/tv_name"
+        android:background="@mipmap/elixir"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/card_elixir_cost_text"
+        android:textStyle="bold"
+        tools:text="10" />
+
+    <TextView
+        android:id="@+id/tv_arena"
+        android:layout_width="@dimen/card_arena_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_icon"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/card_arena_magin"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/card_arena_text"
+        android:textStyle="bold"
+        tools:text="Arena 7" />
+
 
 </RelativeLayout>
