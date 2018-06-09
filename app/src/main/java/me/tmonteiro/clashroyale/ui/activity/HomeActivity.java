@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity implements Injectable, CardA
 
     private void setupView() {
         this.recyclerView = findViewById(R.id.rv_card);
-        this.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        this.recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
     }
 
     private void setupViewModel() {
