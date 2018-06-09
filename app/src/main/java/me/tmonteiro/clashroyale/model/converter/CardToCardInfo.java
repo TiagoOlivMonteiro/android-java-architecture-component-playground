@@ -17,9 +17,9 @@ public class CardToCardInfo {
             cardInfo.setName(card.getName());
             cardInfo.setIconUrl(card.getImageUrl());
             cardInfo.setIdName(card.getIdName());
-            cardInfo.setElixirCost(card.elixirCost);
-            cardInfo.setRarity(card.rarity);
-            cardInfo.setArena(card.arena);
+            cardInfo.setElixirCost(card.getElixirCost());
+            cardInfo.setRarity(card.getRarity());
+            cardInfo.setArena(card.getArena());
             ret.add(cardInfo);
         }
 
