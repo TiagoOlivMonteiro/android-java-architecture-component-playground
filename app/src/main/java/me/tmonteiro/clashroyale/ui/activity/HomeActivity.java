@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,14 +23,17 @@ import me.tmonteiro.clashroyale.di.Injectable;
 import me.tmonteiro.clashroyale.ui.adapter.CardAdapter;
 import me.tmonteiro.clashroyale.ui.adapter.CardAdapterItemSelected;
 import me.tmonteiro.clashroyale.viewmodel.card.CardViewModel;
+import me.tmonteiro.clashroyale.viewmodel.ViewModelProviderWrapper;
 import me.tmonteiro.clashroyale.vo.card.CardComposition;
 import me.tmonteiro.clashroyale.vo.card.CardInfo;
 
-public class HomeActivity extends AppCompatActivity implements Injectable, CardAdapterItemSelected, View.OnClickListener
-{
+public class HomeActivity extends AppCompatActivity implements Injectable, CardAdapterItemSelected, View.OnClickListener {
 
     @Inject
     ViewModelProvider.Factory factory;
+
+    @Inject
+    ViewModelProviderWrapper providerWrapper;
 
     CardViewModel cardViewModel;
 
@@ -142,5 +146,15 @@ public class HomeActivity extends AppCompatActivity implements Injectable, CardA
         if(view.getId() == R.id.tv_try_again){
             loadCards();
         }
+    }
+
+    @VisibleForTesting
+    public void setFactory(ViewModelProvider.Factory factory){
+        this.factory = factory;
+    }
+
+    @VisibleForTesting
+    public void setProviderWrapper(ViewModelProviderWrapper wrapper){
+        this.providerWrapper = wrapper;
     }
 }

@@ -6,7 +6,7 @@ import dagger.Module;
 import dagger.Provides;
 import me.tmonteiro.clashroyale.api.CardAPI;
 import me.tmonteiro.clashroyale.repository.card.CardRepository;
-import me.tmonteiro.clashroyale.ui.activity.HomeActivity;
+import me.tmonteiro.clashroyale.viewmodel.ViewModelProviderWrapper;
 import me.tmonteiro.clashroyale.viewmodel.card.CardViewModel;
 
 @Module
@@ -21,5 +21,11 @@ public class HomeModule {
     ViewModelProvider.Factory providesCardViewModelFactory(CardRepository repository) {
         return new CardViewModel.Factory(repository);
     }
+
+    @Provides
+    ViewModelProviderWrapper providesViewModelProviderWrapper() {
+        return new ViewModelProviderWrapper();
+    }
+
 
 }

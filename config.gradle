@@ -32,6 +32,7 @@ ext.versions = [
         junitVersion      : '4.12',
         testRunnerVersion : '1.0.2',
         espressoVersion   : '3.0.2',
+        mockitoVersion    : '2.18.3'
 ]
 
 ext.libraries = [
@@ -40,6 +41,7 @@ ext.libraries = [
         supportRecyclerView : "com.android.support:recyclerview-v7:$versions.appCompatVersion",
         cardView : "com.android.support:cardview-v7:$versions.cardViewVersion",
         lifeCycleExtestion : "android.arch.lifecycle:extensions:$versions.lifecycleVersion",
+        archCoreTesting : "android.arch.core:core-testing:$versions.lifecycleVersion",
         dagger : "com.google.dagger:dagger:$versions.daggerVersion",
         daggerAndroid : "com.google.dagger:dagger-android:$versions.daggerVersion",
         daggerCompiler : "com.google.dagger:dagger-compiler:$versions.daggerVersion",
@@ -51,6 +53,10 @@ ext.libraries = [
         picasso :"com.squareup.picasso:picasso:$versions.picassoVersion",
         junit : "junit:junit:$versions.junitVersion",
         testRunner : "com.android.support.test:runner:$versions.testRunnerVersion",
-        espressoCore :  "com.android.support.test.espresso:espresso-core:$versions.espressoVersion"
+        testRule : "com.android.support.test:rules:$versions.testRunnerVersion",
+        espressoCore :  "com.android.support.test.espresso:espresso-core:$versions.espressoVersion",
+        espressoIntents : "com.android.support.test.espresso:espresso-intents:$versions.espressoVersion",
+        mockitoCore : "org.mockito:mockito-core:$versions.mockitoVersion",
+        mockitoAndroid : "org.mockito:mockito-android:$versions.mockitoVersion"
 
 ]

@@ -57,5 +57,11 @@ dependencies {
 
     // Instrumental Test
     androidTestImplementation libraries.testRunner
+    androidTestImplementation libraries.testRule
     androidTestImplementation libraries.espressoCore
+    androidTestImplementation libraries.espressoIntents
+    androidTestImplementation libraries.mockitoCore
+    androidTestImplementation libraries.mockitoAndroid
+    androidTestImplementation libraries.archCoreTesting
+    androidTestAnnotationProcessor libraries.daggerCompiler
 }
