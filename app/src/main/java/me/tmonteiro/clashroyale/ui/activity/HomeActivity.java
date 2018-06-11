@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements Injectable, CardA
     }
 
     private void setupViewModel() {
-        this.cardViewModel = ViewModelProviders.of(this, factory)
+        this.cardViewModel = providerWrapper.of(this, factory)
                 .get(CardViewModel.class);
     }
 

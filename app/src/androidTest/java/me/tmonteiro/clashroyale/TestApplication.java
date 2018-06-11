@@ -1,3 +1,5 @@
+package me.tmonteiro.clashroyale;
+
 import android.app.Application;
 
 public class TestApplication extends Application {

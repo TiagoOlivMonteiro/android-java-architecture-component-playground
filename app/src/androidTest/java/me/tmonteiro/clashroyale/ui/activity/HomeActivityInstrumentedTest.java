@@ -1,4 +1,4 @@
-package me.tmonteiro.clashroyale;
+package me.tmonteiro.clashroyale.ui.activity;
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.lifecycle.ViewModelProvider;
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 import android.support.test.runner.intercepting.SingleActivityFactory;
 import android.support.v4.app.FragmentActivity;
 import android.test.mock.MockApplication;
@@ -15,6 +16,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
@@ -29,6 +31,7 @@ import me.tmonteiro.clashroyale.viewmodel.card.CardViewModel;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
 
+@RunWith(AndroidJUnit4.class)
 public class HomeActivityInstrumentedTest {
 
     @Mock

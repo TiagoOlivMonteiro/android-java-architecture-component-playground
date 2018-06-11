@@ -5,12 +5,12 @@ android {
     compileSdkVersion versions.compileSdkVersion
 
     defaultConfig {
-        applicationId "me.tmonteiro.clashroyal"
+        applicationId "me.tmonteiro.clashroyale"
         minSdkVersion versions.minSdkVersion
         targetSdkVersion versions.targetSdkVersion
         versionCode versions.versionCode
         versionName versions.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "me.tmonteiro.clashroyale.MockTestRunner"
     }
 
     buildTypes {

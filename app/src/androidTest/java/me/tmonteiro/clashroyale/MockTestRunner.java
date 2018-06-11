@@ -1,3 +1,5 @@
+package me.tmonteiro.clashroyale;
+
 import android.app.Application;
 import android.content.Context;
 import android.support.test.runner.AndroidJUnitRunner;
